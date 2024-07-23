@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import MovieList from './MovieList';
+import MovieDetails from './MovieDetails';
+import Sidebar from './Sidebar';
+import ResponsiveAppBar from './Header';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container>
+      <ResponsiveAppBar />
+      <Sidebar />
+      <Grid item xs={12} sm={9}>
+        <Routes>
+          <Route path="/" element={<MovieList />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+        </Routes>
+      </Grid>
+    </Grid>
   );
 }
 
